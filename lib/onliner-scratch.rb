@@ -15,9 +15,7 @@ end
 browser = Capybara.current_session
 driver = browser.driver.browser
 browser.visit "https://www.onliner.by/"
-
-
-classes = browser.execute_script(
+id_array = browser.execute_script(
     " var m = document.getElementsByClassName('b-tile');
             var t = []
 
@@ -28,8 +26,8 @@ classes = browser.execute_script(
     ",
 ).find_all{ |elem| elem != "" }
 CSV.open("data.csv", "w", encoding: "UTF-8") do |wr|
-  classes.each do |el|
-    browser.find('#' + el).click
+  id_array.each do |id|
+    browser.find('#' + id).click
     wr << [
             browser.find('.news-header__title > div').text,
             browser.find('.news-header__image').native.css_value('background-image').slice(5..-3),

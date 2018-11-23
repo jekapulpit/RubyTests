@@ -1,19 +1,14 @@
-
 class Array_mover
-  def self.move(list, n)
-    n.times do
-      buf = list[list.size - 1]
-      el = list.size - 1
+  def self.move(list, position)
+    position.times do
+      buffer = list[list.size - 1]
+      index = list.size - 1
       (list.length - 1).times do
-        list[el] = list[el-1]
-        el -= 1
+        list[index] = list[index-1]
+        index -= 1
       end
-      list[0] = buf
+      list[0] = buffer
     end
     list
   end
 end
-
-
-
-
