@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
 
-gem "rspec"
-gem "capybara"
-gem "nokogiri"
+gem 'capybara'
+gem 'nokogiri'
+gem 'rspec'

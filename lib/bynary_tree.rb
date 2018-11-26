@@ -5,18 +5,18 @@ class TreeNode
     @left, @right = nil, nil
   end
 
-  def self.binary_tree_paths (leaf, str = "", fullstr = [])
-    str += leaf.val.to_s + ' '
-    if !leaf.left and !leaf.right
+  def self.binary_tree_paths(node, str = '', fullstr = [])
+    str += node.val.to_s + ' '
+    if !node.left && !node.right
       fullstr.push(str)
       fullstr
-    elsif !leaf.left and leaf.right
-      binary_tree_paths(leaf.right, str, fullstr)
-    elsif leaf.left and !leaf.right
-      binary_tree_paths(leaf.left, str, fullstr)
+    elsif !node.left && node.right
+      binary_tree_paths(node.right, str, fullstr)
+    elsif node.left && !node.right
+      binary_tree_paths(node.left, str, fullstr)
     else
-      binary_tree_paths(leaf.right, str, fullstr)
-      binary_tree_paths(leaf.left, str, fullstr)
+      binary_tree_paths(node.right, str, fullstr)
+      binary_tree_paths(node.left, str, fullstr)
     end
   end
 end
