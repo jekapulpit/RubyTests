@@ -1,17 +1,23 @@
 require 'RSpec'
 require '../lib/array_mover'
 RSpec.describe Array_mover do
-  let(:array) { [1,2,3] }
-  it 'returns same' do
-    expect(Array_mover.move(array, 3)).to eq([1,2,3])
+  let(:array_of_3) { [1, 2, 3] }
+  let(:array_of_1) { [1] }
+  let(:array_of_5) { [1, 2, 3, 4, 5] }
+
+  context 'returns same' do
+    it { expect(Array_mover.move(array_of_3, 3)).to eq([1, 2, 3]) }
   end
-  it 'returns one left move' do
-    expect(Array_mover.move(array, array.length-1)).to eq([2,3,1])
+
+  context 'returns one left move' do
+    it { expect(Array_mover.move(array_of_3, array_of_3.length - 1)).to eq([2, 3, 1]) }
   end
-  it 'returns array of 1 el' do
-    expect(Array_mover.move([1], 5)).to eq([1])
+
+  context 'returns array of 1 el' do
+    it { expect(Array_mover.move(array_of_1, 5)).to eq(array_of_1) }
   end
-  it 'returns 3 moves' do
-    expect(Array_mover.move([1,2,3,4,5], 8)).to eq([4,5,1,2,3])
+
+  context 'returns 3 moves' do
+    it { expect(Array_mover.move(array_of_5, 8)).to eq([4, 5, 1, 2, 3]) }
   end
 end
