@@ -3,6 +3,7 @@ require 'capybara'
 require 'RSpec'
 
 class Scratcher
+
   def initialize
     Capybara.register_driver :selenium do |app|
       Capybara::Selenium::Driver.new(app, browser: :chrome)
@@ -15,9 +16,11 @@ class Scratcher
     @browser = Capybara.current_session
     driver = @browser.driver.browser
   end
+
   def go_to_main_page
     @browser.visit "https://www.onliner.by/"
   end
+
   def get_ids_in_class(class_name)
     @browser.execute_script(
         " var m = document.getElementsByClassName('#{class_name}');
@@ -29,6 +32,7 @@ class Scratcher
             return t;",
         ).find_all{ |elem| elem != "" }
   end
+
   def get_all_news(id_list)
     news = []
     id_list.each do |id|
@@ -46,20 +50,9 @@ class Scratcher
     end
     news
   end
+
   def go_to_page(id)
     @browser.find('#' + id).click
   end
-end
 
-class CSVwriter
-  def initialize(filename)
-    @filename = filename
-  end
-  def write_info(info)
-    CSV.open(@filename, "w", encoding: "UTF-8") do |wr|
-      info.each do |inf_block|
-        wr << inf_block
-      end
-    end
-  end
 end

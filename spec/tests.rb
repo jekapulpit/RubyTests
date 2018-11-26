@@ -2,6 +2,7 @@ require 'RSpec'
 require '../lib/array_mover'
 require '../lib/bynary_tree'
 RSpec.describe Array_mover do
+
   let(:array_of_3) { [1, 2, 3] }
   let(:array_of_1) { [1] }
   let(:array_of_5) { [1, 2, 3, 4, 5] }
@@ -21,9 +22,11 @@ RSpec.describe Array_mover do
   context 'returns 3 moves' do
     it { expect(Array_mover.move(array_of_5, 8)).to eq([4, 5, 1, 2, 3]) }
   end
+
 end
 
 RSpec.describe TreeNode do
+
   let(:node) { TreeNode.new(1) }
   let(:leaf1) { TreeNode.new(2) }
   let(:leaf2) { TreeNode.new(3) }
@@ -63,4 +66,5 @@ RSpec.describe TreeNode do
       expect(TreeNode.binary_tree_paths(node)).to eq(['1 5 ', '1 2 3 4 '])
     end
   end
+
 end
