@@ -1,5 +1,5 @@
-require 'scratcher'
-require 'CSVwriter'
+require './scratcher'
+require './CSVwriter'
 
 scratcher = Scratcher.new
 scratcher.go_to_main_page
